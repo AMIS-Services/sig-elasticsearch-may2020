@@ -2,7 +2,7 @@
 
 In this part of the hands-on we are going to establish a connection to elasticsearch from a Node.js application. In the Node.js application the Koa framework (https://koajs.com/) is used for easily making an API.
 
-The code you should have after every step is located in the folder with the name of that step. To do each step separately (without having done the previous steps) you can therefore use the code from the previous step as the starting point. If you start with a project in one of the step folders, you have to run “npm install” first in order to install the node_modules used by that project. If you are doing all the steps consecutively you can start with the “basic-app” project and keep expanding from there.
+All start code and code examples are located in the elasticsearch-nodejs folder. The code you should have after every step is located in the folder with the name of that step. To do each step separately (without having done the previous steps) you can therefore use the code from the previous step as the starting point. If you start with a project in one of the step folders, you have to run “npm install” first in order to install the node_modules used by that project. If you are doing all the steps consecutively you can start with the “basic-app” project and keep expanding from there.
 
 For this part of the hands-on we are assuming that you are running an elasticsearch cluster with docker as described [elasticsearch_docker.md](elasticsearch_docker.md). We are using the same recipes index that is loaded in this manual.
 
