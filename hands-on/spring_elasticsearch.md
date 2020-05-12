@@ -11,8 +11,16 @@ For this part of the hands-on we are assuming that you are running an elasticsea
 1. Open the Springboot application with your favorite IDE.
 2. Add the annotation @EnableElasticsearchRepositories to the application. This enables the elastic search repositories.
 3. Open the Recipe class and add the annotation @Document(indexName = "recipes", type = "\_doc") to this class.
-4. The springboot application is configured to connect to a ES cluster on localhost on port 9200. Run the application to check if everything works.
-5. Test the GET method of recipe controller. The url is http://localhost:8080/recipes/{id}.
+4. The springboot application is configured to connect to a ES cluster on localhost on port 9200. Run the application to check if everything works. You can run the application using the command: 'mvn spring-boot:run' or you could run the application from within your IDE, for example in Intellij by right clicking on the RecipesServiceApplication class and then the menu item 'Run RecipesService... main()'
+5. Test the GET method of recipe controller. The url is http://localhost:8080/recipes/{id}. If you don't know an id of a recipe, use the following GET request to find an id:
+```
+GET /_search
+{
+    "query": {
+        "match_all": {}
+    }
+}
+```
 
 ## Step 2 - Using the ElasticsearchCrudRepository
 
@@ -38,6 +46,6 @@ For this part of the hands-on we are assuming that you are running an elasticsea
   }
 ```
 
-This will do the exact query as the findByName query in the RecipesRepository. However, in the custom implementation using the elasticsearchRestTemplate you can have more flexibility in creating the ES query. Uncomment the findRecipeByNameCustom method in the Controller and test this endpoint.
+This will do the exact query as the findByName query in the RecipesRepository. However, in the custom implementation using the elasticsearchRestTemplate you can have more flexibility in creating the ES query. Using the ElasticsearchRestTemplate you will create a query using a QueryBuilder which will be send using the esTempalte.queryForList. Uncomment the findRecipeByNameCustom method in the Controller and test this endpoint.
 
-5. Try to implement one or more aggregations which you created in the handson [queries and aggregations part](queries_aggregations.md) in the RecipesRepository or in the RecipesRepositoryCustom.
+5. Try to implement one or more searches, or even aggregations if you want an extra challenge, which you created in the handson [queries and aggregations part](queries_aggregations.md) in the RecipesRepository or in the RecipesRepositoryCustom.

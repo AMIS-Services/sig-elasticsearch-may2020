@@ -48,11 +48,11 @@ HEAD http://localhost:9200/beers/_doc/42 (check HTTP status code)
 
 POST http://localhost:9200/beers/_bulk
 ```
-{ "index" : { "_index" : "beers", "_id" : "1" } },
-{"name": "Grolsch", "description": "it is a beer", "type": "beer", "alcoholpercentage": 5.0 },
-{ "index" : { "_index" : "beers", "_id" : "2" } },
-{"name": "Jupiler", "description": "it is a beer", "type": "beer", "alcoholpercentage": 5.2 },
-{ "index" : { "_index" : "beers", "_id" : "3" } },
+{ "index" : { "_index" : "beers", "_id" : "1" } }
+{"name": "Grolsch", "description": "it is a beer", "type": "beer", "alcoholpercentage": 5.0 }
+{ "index" : { "_index" : "beers", "_id" : "2" } }
+{"name": "Jupiler", "description": "it is a beer", "type": "beer", "alcoholpercentage": 5.2 }
+{ "index" : { "_index" : "beers", "_id" : "3" } }
 {"name": "Leffe Blond", "type": "blond", "alcoholpercentage": 6.6 }
 ```
 
