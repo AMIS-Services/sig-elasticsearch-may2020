@@ -54,7 +54,7 @@ The keyword field has to be used for name, since this is a text field. In the so
 ```json
 {
   "query": {
-    "match": {
+    "multi_match": {
       "query": "mint syrup"
     }
   }
