@@ -24,14 +24,13 @@ This does a whole bunch of logging in the console, when finished should look som
 
 Leave this window open and open a new window for next steps.
 
-- Check if elasticsearch is running correctly in postman by doing a GET request on http://localhost:9200/_nodes. This will return a JSON result that should include the following:
+- Check if elasticsearch is running correctly in postman by doing a GET request on http://localhost:9200/_cat/nodes?v. This will return a list of all the known nodes that should have all three es0X nodes like below (master node might change in your configuration):
 
-```json
-"_nodes": {
-        "total": 3,
-        "successful": 3,
-        "failed": 0
-    },
+```
+ip         heap.percent ram.percent cpu load_1m load_5m load_15m node.role master name
+172.18.0.3           19          92  39    0.89    0.29     0.11 dilm      -      es01
+172.18.0.2           19          92  39    0.89    0.29     0.11 dilm      *      es02
+172.18.0.4           28          92  48    0.89    0.29     0.11 dilm      -      es03
 ```
 
 ### load recipes data
@@ -44,18 +43,11 @@ Leave this window open and open a new window for next steps.
 
 ![screenshot of elasticsearch output after inserting recipes](images/elasticsearch-output-after-insert.png)
 
-- To check if data is loaded correctly, do a GET request on: http://localhost:9200/_stats. The result should show that there are 2 shards. Under “indices” it should show only the "resipes" index:
+- To check if data is loaded correctly, do a GET request on: http://localhost:9200/_cat/indices?v. The result should show that there is 1 primary and 1 replica for the recipes index. The health of this index should be green:
 
-```json
-"indices": {
-        "recipes": {
-            "uuid": "vwUxcJusRKiIRX5C7I2szg",
-            "primaries": {
-                "docs": {
-                    "count": 172699,
-                    "deleted": 0
-                },
-(...)
+```
+health status index   uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+green  open   recipes Qjo2EzBeRDKkZGBsnmaORg   1   1     173278            0    365.5mb        182.7mb
 ```
 
 The elasticsearch cluster is now up and the recipes data is loaded!
