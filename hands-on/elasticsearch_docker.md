@@ -24,7 +24,7 @@ This does a whole bunch of logging in the console, when finished should look som
 
 Leave this window open and open a new window for next steps.
 
-- Check if elasticsearch is running correctly in postman by doing a GET request on http://localhost:9200/_cat/nodes?v. This will return a list of all the known nodes that should have all three es0X nodes like below (master node might change in your configuration):
+- Check if elasticsearch is running correctly in postman by doing a GET request on http://localhost:9200/_cat/nodes?v (or http://localhost:9200/_nodes for a more in depth information). This will return a list of all the known nodes that should have all three es0X nodes like below (master node might change in your configuration):
 
 ```
 ip         heap.percent ram.percent cpu load_1m load_5m load_15m node.role master name
@@ -43,7 +43,7 @@ ip         heap.percent ram.percent cpu load_1m load_5m load_15m node.role maste
 
 ![screenshot of elasticsearch output after inserting recipes](images/elasticsearch-output-after-insert.png)
 
-- To check if data is loaded correctly, do a GET request on: http://localhost:9200/_cat/indices?v. The result should show that there is 1 primary and 1 replica for the recipes index. The health of this index should be green:
+- To check if data is loaded correctly, do a GET request on: http://localhost:9200/_cat/indices?v (or http://localhost:9200/_starts for a more in depth information). The result should show that there is 1 primary and 1 replica for the recipes index. The health of this index should be green:
 
 ```
 health status index   uuid                   pri rep docs.count docs.deleted store.size pri.store.size
